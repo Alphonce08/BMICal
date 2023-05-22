@@ -29,9 +29,9 @@ class MainActivity : AppCompatActivity() {
             var myheight = edt_height.text.toString().trim()
 
             //validation
-            if (myweight.isEmpty() || myheight.isEmpty()){
+            if (myweight.isEmpty() || myheight.isEmpty()) {
                 Toast.makeText(this, "Cann't Submit an Empty Form", Toast.LENGTH_SHORT).show()
-            } else{
+            } else {
 
                 //convert string to Double
                 var userweight = myweight.toString()
@@ -44,8 +44,7 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-
-
+        }
 
 
 
