@@ -8,31 +8,46 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
-    lateinit var display_results:TextView
-    lateinit var bnweight:EditText
-    lateinit var bnHght:EditText
-    lateinit var cal:Button
+    lateinit var edt_text:TextView
+    lateinit var edt_weight:EditText
+    lateinit var edt_height:EditText
+    lateinit var btn_cal:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        display_results = findViewById(R.id.editText)
-        bnweight = findViewById(R.id.bnweight)
-        bnHght = findViewById(R.id.bnHght)
-        cal = findViewById(R.id.cal)
+        edt_text = findViewById(R.id.txtdisplay)
+        edt_weight = findViewById(R.id.edtweight)
+        edt_height = findViewById(R.id.edtheight)
+        btn_cal = findViewById(R.id.btncal)
 
 
-        cal.setOnClickListener {
-            var weight = bnweight.text.toString().trim()
-            var heght = bnHght.text.toString().trim()
+        btn_cal.setOnClickListener {
+
+            //create two vars for receive data
+
+            var myweight = edt_weight.text.toString().trim()
+            var myheight = edt_height.text.toString().trim()
+
+            //validation
+            if (myweight.isEmpty() || myheight.isEmpty()){
+                Toast.makeText(this, "Cann't Submit an Empty Form", Toast.LENGTH_SHORT).show()
+            } else{
+
+                //convert string to Double
+                var userweight = myweight.toString()
+                var userheight = myheight.toString()
+
+                //calculations
+                var result = userweight / (userheight * userheight)
+                var finalresult = result.toString()
+                edt_text.setText(finalresult)
+            }
 
 
-            var W = weight.toDouble()
-            var H = heght.toDouble()
 
-            var total = W * H
-            var string_total = total.toString()
-            Toast.makeText(this, "Your BMI is $string_total", Toast.LENGTH_SHORT).show()
-        }
+
+
+
 
     }
 }
